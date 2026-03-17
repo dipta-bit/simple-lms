@@ -1,0 +1,12 @@
+# Environment Variables
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Mac OS
+.DS_Store
+
+# Docker volumes (jika ada data lokal)
+postgres_data/
