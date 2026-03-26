@@ -2,26 +2,38 @@
 
 Proyek ini adalah kerangka awal untuk aplikasi Learning Management System (LMS) sederhana menggunakan Django dan PostgreSQL, yang dijalankan di dalam container Docker.
 
-## 🚀 Cara Menjalankan Project
+## Cara Menjalankan Project Progress 1: Simple LMS - Docker & Django Foundation
 
-Ikuti langkah-langkah berikut untuk menjalankan aplikasi ini di komputer lokal:
+Pastikan **Docker** dan **Docker Desktop** sudah ter-*install*di komputermu sebelum memulai langkah-langkah di bawah ini.
 
-1. **Siapkan Environment Variables**
-   Duplikat file `.env.example` dan ubah namanya menjadi `.env`.
-   bash
-   cp .env.example .env
+### 1. Menyalakan Container
 
-## 🚀 Query Optimization Demo (N+1 Problem)
+Buka terminal, arahkan ke folder proyek ini, lalu jalankan perintah berikut untuk mengunduh semua kebutuhan dan menyalakan mesinnya di latar belakang:
 
-Proyek ini telah menerapkan optimasi database untuk mengatasi **N+1 Problem** menggunakan `select_related` dan `prefetch_related` melalui Custom Model Managers.
+```bash
+docker-compose up -d --build
+```
 
-Untuk membuktikannya, sebuah skrip `demo.py` telah dibuat. Skrip ini menghasilkan data dummy awal (fixtures) dan membandingkan eksekusi query dengan dan tanpa optimasi.
+Tunggu hingga proses selesai dan terminal menampilkan status Started atau Up warna hijau.
 
-**Hasil Perbandingan:**
+### 2. Jalankan Migrasi Database
 
-- **Tanpa Optimasi:** Menghasilkan **21 Queries** ke database (1 query untuk mengambil daftar Course, ditambah 10 query untuk Instructor dan 10 query untuk Category).
-- **Dengan Optimasi (`select_related`):** Menghasilkan **HANYA 1 Query** ke database. Django menggunakan SQL `JOIN` untuk mengambil seluruh data terkait secara bersamaan.
+Setelah mesin menyala,buat struktur tabel standar Django di dalam database. Jalankan perintah ini:
 
-**Cara Menjalankan Skrip Demo:**
-Jalankan perintah berikut di terminal:
-`docker-compose exec web python demo.py`
+```bash
+docker-compose exec web python manage.py migrate
+```
+
+### 3. Buat Akun Admin
+
+Agar bisa masuk ke panel kontrol LMS, buat satu akun Superuser dengan perintah:
+
+```bash
+docker-compose exec web python manage.py createsuperuser
+```
+
+### 4. Akses Aplikasi di Browser
+
+Jika semua langkah di atas berhasil, buka browser dan kunjungi alamat berikut:
+
+Halaman Utama Django: http://localhost:8000
