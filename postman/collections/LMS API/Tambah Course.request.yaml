@@ -1,0 +1,17 @@
+$kind: http-request
+name: Tambah Course
+url: http://localhost:8000/api/courses/
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "title": "Course Python DRF",
+        "description": "Belajar bikin REST API berstandar industri!",
+        "instructor": 2
+    }
+auth:
+  type: bearer
+  credentials:
+    token: ""
+order: 1774518104943

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lms',
+    'rest_framework',
+    'drf_yasg',
 
 ]
 
@@ -146,3 +148,23 @@ CACHES = {
 CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+
+# --- KONFIGURASI DJANGO REST FRAMEWORK & JWT ---
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+from datetime import timedelta
+# Konfigurasi umur Token JWT
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), # Tiket akses berlaku 1 jam
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),    # Tiket perpanjangan berlaku 1 hari
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}

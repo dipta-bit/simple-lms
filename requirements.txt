@@ -2,9 +2,14 @@ Django>=4.2,<5.0
 psycopg2-binary>=2.9  # Driver untuk PostgreSQL
 python-dotenv>=1.0    # Untuk membaca file .env
 
-#libray progress 4
+#library(Caching, NoSQL, Background Taks)
 redis>=5.0.1
 django-redis>=5.4.0
 pymongo>=4.6.0
 celery>=5.3.6
 flower>=2.0.1
+
+#library(REST API, JWT, Swagger)
+djangorestframework
+djangorestframework-simplejwt
+drf-yasg

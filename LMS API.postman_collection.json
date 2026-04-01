@@ -1,0 +1,81 @@
+{
+  "info": {
+    "_postman_id": "07a1d181-4760-4cfa-aa2c-870c6498fede",
+    "name": "LMS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53507606",
+    "_collection_link": "https://go.postman.co/collection/53507606-07a1d181-4760-4cfa-aa2c-870c6498fede?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Tambah Course",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/courses/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "courses",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login admin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/login/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "login",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
